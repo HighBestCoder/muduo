@@ -44,7 +44,8 @@ int main(int argc, char* argv[])
     }
     else
     {
-      struct tm tm = { };
+      struct tm tm;
+      memset(&tm, 0, sizeof(struct tm));
       end = strptime(argv[i], "%F %T", &tm);
       if (end != NULL && *end == '\0')
       {

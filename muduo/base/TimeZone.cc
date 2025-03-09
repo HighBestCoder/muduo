@@ -168,7 +168,7 @@ class File : noncopyable
 // RFC 8536: https://www.rfc-editor.org/rfc/rfc8536.html
 bool readDataBlock(File& f, struct TimeZone::Data* data, bool v1)
 {
-  const int time_size = v1 ? sizeof(int32_t) : sizeof(int64_t);
+  const int time_size = static_cast<int>(v1 ? sizeof(int32_t) : sizeof(int64_t));
   const int32_t isutccnt = f.readInt32();
   const int32_t isstdcnt = f.readInt32();
   const int32_t leapcnt = f.readInt32();
